@@ -8,6 +8,7 @@ resource "aws_iam_user" "test_user" {
   }
 }
 
+#Create iam access key for new user
 resource "aws_iam_access_key" "test_user" {
   user = aws_iam_user.test_user.name
 }
