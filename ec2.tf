@@ -7,7 +7,7 @@ variable "ingressrules" {
 #Security group for EC2 instance to allow web traffic on ports 80, 443, and 22
 resource "aws_security_group" "web_traffic" {
   name        = "Allow web traffic"
-  description = "Allow ssh and standard http/https ports inbound and all outbound"
+  description = "Allow ssh and standard http/https ports inbound and everything outbound"
   vpc_id      = aws_vpc.primary.id
 
   dynamic "ingress" {
