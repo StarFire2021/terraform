@@ -13,6 +13,7 @@ resource "aws_iam_access_key" "test_user" {
   user = aws_iam_user.test_user.name
 }
 
+#Create a general policy to be applied to users
 resource "aws_iam_user_policy" "general_user" {
   name = "test"
   user = aws_iam_user.test_user.name
