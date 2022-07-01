@@ -8,7 +8,7 @@ variable "ingressrules" {
 resource "aws_security_group" "web_traffic" {
   name        = "Allow web traffic"
   description = "Allow ssh and standard http/https ports inbound and everything outbound"
-  vpc_id = "${aws_vpc.primary.id}"
+  vpc_id      = aws_vpc.primary.id
 
   dynamic "ingress" {
     iterator = port
@@ -31,11 +31,11 @@ resource "aws_security_group" "web_traffic" {
 
 #Create EC2 instance
 resource "aws_instance" "testbox" {
-  ami           = "${data.aws_ami.ubuntu.id}"
-  instance_type = "t2.micro"
-  availability_zone = "us-east-1a"
-  subnet_id = "${aws_subnet.test_subnet.id}"
-  private_ip = "10.0.0.4"
+  ami                    = data.aws_ami.ubuntu.id
+  instance_type          = "t2.micro"
+  availability_zone      = "us-east-1a"
+  subnet_id              = aws_subnet.test_subnet.id
+  private_ip             = "10.0.0.4"
   vpc_security_group_ids = ["${aws_security_group.web_traffic.id}"]
 
   tags = {
