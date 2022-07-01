@@ -92,6 +92,7 @@ jobs:
           email: ${{ github.actor }}@users.noreply.github.com
           name: ${{ github.actor }}
           commit_message: "Updated with Terraform Fmt"
+          files: /home/runner/work/_temp/3ea2ad93-f839-46fd-8c41-0fb33c72e1cb
 
     # Generates an execution plan for Terraform
     - name: Terraform Plan
