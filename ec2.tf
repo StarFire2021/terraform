@@ -45,7 +45,7 @@ resource "aws_instance" "testbox" {
 
 #Create elastic ip for EC2 instance
 resource "aws_eip" "public_ip" {
-  instance = "${aws_instance.testbox.id}"
+  instance = aws_instance.testbox.id
   vpc      = true
 }
 
