@@ -78,14 +78,16 @@ jobs:
     # Initialize a new or existing Terraform working directory by creating initial files, loading any remote state, downloading modules, etc.
     - name: Terraform Init
       run: terraform init
-      env:
-        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        AWS_REGION: 'us-east-1'
-
+      
     # Checks that all Terraform configuration files adhere to a canonical format
     - name: Terraform Format
       run: terraform fmt
+      
+    - name: Add & Commit
+      uses: EndBug/add-and-commit@v9.0.1
+      with:
+        add: .
+        message: "Updated with Terraform Fmt"
 
     # Generates an execution plan for Terraform
     - name: Terraform Plan
@@ -97,7 +99,3 @@ jobs:
     - name: Terraform Apply
       if: github.ref == 'refs/heads/"main"' && github.event_name == 'push'
       run: terraform apply -auto-approve -input=false
-      env:
-        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        AWS_REGION: 'us-east-1'
