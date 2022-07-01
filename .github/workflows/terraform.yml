@@ -69,7 +69,7 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v3
       with:
-        github_token: ${{ secrets.REPO_KEY }}
+        token: ${{ secrets.REPO_KEY }}
 
     # Install the latest version of Terraform CLI and configure the Terraform CLI configuration file with a Terraform Cloud user API token
     - name: Setup Terraform
