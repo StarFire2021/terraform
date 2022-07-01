@@ -43,6 +43,12 @@ resource "aws_instance" "testbox" {
   }
 }
 
+#Create elastic ip for EC2 instance
+resource "aws_eip" "public_ip" {
+  instance = "${aws_instance.testbox.id}"
+  vpc      = true
+}
+
 #Data about ami version for EC2 instance
 data "aws_ami" "ubuntu" {
   most_recent = true
