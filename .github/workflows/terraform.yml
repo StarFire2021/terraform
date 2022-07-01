@@ -86,8 +86,11 @@ jobs:
     - name: Add & Commit
       uses: EndBug/add-and-commit@v9.0.1
       with:
-        add: .
+        add: '.'
+        author_name: "Steven Parker"
+        author_email: "stevenbparker@yahoo.com"
         message: "Updated with Terraform Fmt"
+        github_token: ${{ github.token }}
 
     # Generates an execution plan for Terraform
     - name: Terraform Plan
