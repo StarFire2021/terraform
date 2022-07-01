@@ -92,7 +92,7 @@ jobs:
         author_name: "Steven Parker"
         author_email: "stevenbparker@yahoo.com"
         message: "Updated with Terraform Fmt"
-        repo_token: ${{ secrets.REPO_KEY }}
+        github_token: ${{ secrets.REPO_KEY }}
 
     # Generates an execution plan for Terraform
     - name: Terraform Plan
